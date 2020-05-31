@@ -36,48 +36,32 @@ const SEO = ({ description, lang, meta, title }) => {
       }}
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[
-        {
-          name: `description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:title`,
-          content: title,
-        },
-        {
-          property: `og:description`,
-          content: metaDescription,
-        },
-        {
-          property: `og:type`,
-          content: `website`,
-        },
-        {
-          name: `twitter:card`,
-          content: `summary`,
-        },
-        {
-          name: `twitter:creator`,
-          content: site.siteMetadata.social.twitter,
-        },
-        {
-          name: `twitter:title`,
-          content: title,
-        },
-        {
-          name: `twitter:description`,
-          content: metaDescription,
-        },
-      ].concat(meta)}
-    />
-  );
-};
+    >
+      <meta charSet="utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-  description: ``,
+      {/* General tags */}
+      {/* <meta name="image" content={image} /> */}
+      <meta name="description" content={metaDescription} />
+
+      {/* OpenGraph tags */}
+      <meta property="og:title" content={title} />
+      {/* <meta property="og:image" content={metaImage} /> */}
+      <meta property="og:description" content={metaDescription} />
+      <meta property="og:type" content="website" />
+
+      {/* Twitter Card tags */}
+      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:title" content={title} />
+      <meta name="twitter:description" content={metaDescription} />
+      {/* <meta name="twitter:image" content={metaImage} /> */}
+      <meta name="twitter:creator" content={site.siteMetadata.social.twitter} />
+
+      {meta.map((metaProps) => (
+        <meta {...metaProps} />
+      ))}
+    </Helmet>
+  );
 };
 
 SEO.propTypes = {
@@ -85,6 +69,12 @@ SEO.propTypes = {
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+};
+
+SEO.defaultProps = {
+  lang: `en`,
+  meta: [],
+  description: ``,
 };
 
 export default SEO;
