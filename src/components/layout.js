@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 
 import { rhythm, scale } from '../utils/typography';
@@ -65,6 +66,14 @@ const Layout = ({ location, title, children }) => {
       </footer>
     </div>
   );
+};
+
+Layout.propTypes = {
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired,
+  }).isRequired,
+  title: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export default Layout;

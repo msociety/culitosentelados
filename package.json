@@ -1,11 +1,33 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "culitosentelados",
   "private": true,
-  "description": "A starter for a blog powered by Gatsby and Markdown",
+  "description": "Blog sobre pañales de tela",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "license": "Creative Commons",
+  "author": "Miguel Molina <miguelmolina.tk@gmail.com>",
+  "contributors": [
+    {
+      "name": "Noelia Pérez",
+      "email": "fisioterapia.noelia.perez@gmail.com"
+    }
+  ],
+  "homepage": "https://culitosentelados.es",
+  "keywords": [
+    "blog",
+    "pañales",
+    "tela"
+  ],
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,css,scss,gql,graphql,md}\"",
+    "check-pretty": "prettier --list-different {,src/**/}*.{js,jsx,json,css,scss,gql,graphql,md}",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1",
+    "lint:js": "eslint . --ext .js --cache",
+    "lint:css": "stylelint 'src/**/*.js'"
   },
   "dependencies": {
     "gatsby": "^2.21.37",
@@ -36,25 +58,29 @@
     "typography-theme-wordpress-2016": "^0.16.19"
   },
   "devDependencies": {
-    "prettier": "2.0.5"
+    "eslint": "^7.1.0",
+    "eslint-config-gatsby-standard": "^2.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-emotion": "^10.0.27",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.4",
+    "prettier": "2.0.5",
+    "stylelint": "^13.5.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
   },
-  "homepage": "https://github.com/gatsbyjs/gatsby-starter-blog#readme",
-  "keywords": [
-    "gatsby"
-  ],
-  "license": "MIT",
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/msoceity/culitosentelados.git"
   },
-  "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  "engines": {
+    "node": ">= 10.13.0"
+  },
+  "bugs": {
+    "url": "https://github.com/msociety/culitosentelados/issues"
   }
 }
