@@ -7,30 +7,7 @@ import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rhythm } from '../utils/typography';
 
-type Data = {
-  site: {
-    siteMetadata: {
-      title: string;
-    };
-  };
-  allMarkdownRemark: {
-    edges: {
-      node: {
-        excerpt: string;
-        frontmatter: {
-          title: string;
-          date: string;
-          description: string;
-        };
-        fields: {
-          slug: string;
-        };
-      };
-    }[];
-  };
-};
-
-const BlogIndex = ({ data, location }: PageProps<Data>) => {
+const QuienSoy = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
 
@@ -68,7 +45,7 @@ const BlogIndex = ({ data, location }: PageProps<Data>) => {
   );
 };
 
-export default BlogIndex;
+export default QuienSoy;
 
 export const pageQuery = graphql`
   query {
@@ -85,7 +62,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "LL", locale: "es")
+            date(formatString: "DD MMMM YYYY", locale: "es")
             title
             description
           }

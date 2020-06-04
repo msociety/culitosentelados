@@ -18,9 +18,9 @@ const SEO = ({ description, lang, meta, title }) => {
           siteMetadata {
             title
             description
-            social {
-              twitter
-            }
+            # social {
+            #   twitter
+            # }
           }
         }
       }
@@ -51,14 +51,14 @@ const SEO = ({ description, lang, meta, title }) => {
       <meta property="og:type" content="website" />
 
       {/* Twitter Card tags */}
-      <meta name="twitter:card" content="summary" />
+      {/* <meta name="twitter:card" content="summary" />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={metaDescription} />
-      {/* <meta name="twitter:image" content={metaImage} /> */}
-      <meta name="twitter:creator" content={site.siteMetadata.social.twitter} />
+      <meta name="twitter:image" content={metaImage} />
+      <meta name="twitter:creator" content={site.siteMetadata.social.twitter} /> */}
 
       {meta.map((metaProps) => (
-        <meta {...metaProps} />
+        <meta key={metaProps.name || metaProps.property} {...metaProps} />
       ))}
     </Helmet>
   );
@@ -72,9 +72,9 @@ SEO.propTypes = {
 };
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: 'es',
   meta: [],
-  description: ``,
+  description: '',
 };
 
 export default SEO;
