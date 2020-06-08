@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBaby } from '@fortawesome/pro-duotone-svg-icons';
-import { rhythm, scale } from '../../utils/typography';
+import { rhythm, scale } from '../../../utils/typography';
 
 export const BabyIcon = styled(FontAwesomeIcon)`
   color: violet;
@@ -19,7 +19,8 @@ export const Links = styled.nav`
   display: flex;
   justify-content: flex-end;
   align-items: right;
-  margin: 10px 0;
+  /* margin: 10px 0; */
+  padding: 10px;
 `;
 
 const Header = ({ location, title }) => {

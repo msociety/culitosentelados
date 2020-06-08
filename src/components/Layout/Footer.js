@@ -5,7 +5,7 @@ import { keyframes } from '@emotion/core';
 // import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/pro-solid-svg-icons';
-import { scale } from '../utils/typography';
+import { scale } from '../../utils/typography';
 
 export const Container = styled.footer`
   position: relative;
@@ -50,7 +50,7 @@ export const Sign = styled.p`
 
 const Footer = () => {
   return (
-    <Container style={{ ...scale(-0.2) }}>
+    <Container style={{ ...scale(-0.4) }}>
       © {new Date().getFullYear()}. Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
       <Sign>
         Done with <HeartIcon icon={faHeart} title="love" /> by mi maridito

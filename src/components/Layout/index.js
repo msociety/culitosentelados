@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'gatsby';
-import { rhythm } from '../utils/typography';
+import { rhythm } from '../../utils/typography';
 import Header from './Header';
 import Footer from './Footer';
 
@@ -9,16 +8,15 @@ const Layout = ({ location, title, children }) => {
   return (
     <>
       <Header location={location} title={title} />
-      <div
+      <main
         style={{
-          marginLeft: 'auto',
-          marginRight: 'auto',
+          margin: '0 auto',
           maxWidth: rhythm(24),
           padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
         }}
       >
-        <main>{children}</main>
-      </div>
+        {children}
+      </main>
       <Footer />
     </>
   );

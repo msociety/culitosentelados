@@ -1,51 +1,11 @@
 // Gatsby supports TypeScript natively!
 import React from 'react';
-import { PageProps, Link, graphql } from 'gatsby';
+import PropTypes from 'prop-types';
+import { graphql } from 'gatsby';
 
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
-import { rhythm } from '../utils/typography';
-
-const QuienSoy = ({ data, location }) => {
-  const siteTitle = data.site.siteMetadata.title;
-  const posts = data.allMarkdownRemark.edges;
-
-  return (
-    <Layout location={location} title={siteTitle}>
-      <SEO title="All posts" />
-      <Bio />
-      {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug;
-        return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.frontmatter.date}</small>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
-          </article>
-        );
-      })}
-    </Layout>
-  );
-};
-
-export default QuienSoy;
 
 export const pageQuery = graphql`
   query {
@@ -54,20 +14,28 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          excerpt
-          fields {
-            slug
-          }
-          frontmatter {
-            date(formatString: "DD MMMM YYYY", locale: "es")
-            title
-            description
-          }
-        }
-      }
-    }
   }
 `;
+
+const QuienSoy = ({ data, location }) => {
+  const siteTitle = data.site.siteMetadata.title;
+  return (
+    <Layout location={location} title={siteTitle}>
+      <SEO title="Quien soy" />
+      <Bio />
+    </Layout>
+  );
+};
+
+QuienSoy.propTypes = {
+  data: PropTypes.shape({
+    site: PropTypes.shape({
+      siteMetadata: PropTypes.shape({
+        title: PropTypes.string.isRequired,
+      }).isRequired,
+    }).isRequired,
+  }).isRequired,
+  location: PropTypes.object.isRequired,
+};
+
+export default QuienSoy;

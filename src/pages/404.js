@@ -5,6 +5,16 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
+export const pageQuery = graphql`
+  query {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+  }
+`;
+
 const NotFoundPage = ({ data, location }) => {
   const siteTitle = data.site.siteMetadata.title;
   return (
@@ -28,13 +38,3 @@ NotFoundPage.propTypes = {
 };
 
 export default NotFoundPage;
-
-export const pageQuery = graphql`
-  query {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-  }
-`;

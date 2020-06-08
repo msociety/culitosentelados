@@ -1,13 +1,35 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendar } from '@fortawesome/pro-light-svg-icons';
 
 import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rhythm, scale } from '../utils/typography';
 
-const BlogPostTemplate = ({ data, pageContext, location }) => {
+export const pageQuery = graphql`
+  query BlogPostBySlug($slug: String!) {
+    site {
+      siteMetadata {
+        title
+      }
+    }
+    markdownRemark(fields: { slug: { eq: $slug } }) {
+      id
+      excerpt(pruneLength: 160)
+      html
+      frontmatter {
+        title
+        date(formatString: "LL", locale: "es")
+        description
+      }
+    }
+  }
+`;
+
+const BlogPost = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next } = pageContext;
@@ -35,7 +57,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            {post.frontmatter.date}
+            <FontAwesomeIcon icon={faCalendar} /> {post.frontmatter.date}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -79,7 +101,7 @@ const BlogPostTemplate = ({ data, pageContext, location }) => {
   );
 };
 
-BlogPostTemplate.propTypes = {
+BlogPost.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       excerpt: PropTypes.string.isRequired,
@@ -117,24 +139,4 @@ BlogPostTemplate.propTypes = {
   }).isRequired,
 };
 
-export default BlogPostTemplate;
-
-export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    site {
-      siteMetadata {
-        title
-      }
-    }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      id
-      excerpt(pruneLength: 160)
-      html
-      frontmatter {
-        title
-        date(formatString: "DD MMMM YYYY", locale: "es")
-        description
-      }
-    }
-  }
-`;
+export default BlogPost;
