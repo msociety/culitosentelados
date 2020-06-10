@@ -52,7 +52,7 @@ const Header = ({ location, title }) => {
     titleElem = (
       <h3
         style={{
-          fontFamily: 'Montserrat, sans-serif',
+          ...scale(1.2),
           marginTop: 0,
         }}
       >
@@ -63,7 +63,7 @@ const Header = ({ location, title }) => {
           }}
           to={'/'}
         >
-          {title}
+          <BabyIcon icon={faBaby} /> {title}
         </Link>
       </h3>
     );

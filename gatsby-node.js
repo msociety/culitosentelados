@@ -61,3 +61,21 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     });
   }
 };
+
+// exports.createSchemaCustomization = ({ actions }) => {
+//   const { createTypes } = actions;
+//   const typeDefs = `
+//     type Frontmatter {
+//       title: String!
+//       date: Date @dateformat(formatString: "DD-MM-YYYY")
+//       description: String
+//       published: Boolean
+//       # featuredImage: File?
+//       tags: [String!]
+//     }
+//     type MarkdownRemark implements Node {
+//       frontmatter: Frontmatter
+//     }
+//   `;
+//   createTypes(typeDefs);
+// };

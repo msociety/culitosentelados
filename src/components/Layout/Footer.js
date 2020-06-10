@@ -5,11 +5,14 @@ import { keyframes } from '@emotion/core';
 // import { Link } from 'gatsby';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/pro-solid-svg-icons';
-import { scale } from '../../utils/typography';
+import { scale, rhythm } from '../../utils/typography';
+import Bio from '../Bio';
 
-export const Container = styled.footer`
+const Container = styled.footer`
   position: relative;
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
   background-color: #333;
   color: #f5f5f5;
@@ -27,14 +30,14 @@ const blinkingHeart = keyframes`
     }
 `;
 
-export const HeartIcon = styled(FontAwesomeIcon)`
+const HeartIcon = styled(FontAwesomeIcon)`
   color: red;
   animation-name: ${blinkingHeart};
   animation-duration: 1.2s;
   animation-iteration-count: infinite;
 `;
 
-export const Sign = styled.p`
+const Sign = styled.p`
   font-size: 0.7em;
   position: absolute;
   right: 10px;
@@ -51,7 +54,10 @@ export const Sign = styled.p`
 const Footer = () => {
   return (
     <Container style={{ ...scale(-0.4) }}>
-      © {new Date().getFullYear()}. Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
+      <Bio style={{ marginBottom: rhythm(1 / 2) }} />
+      <p>
+        © {new Date().getFullYear()}. Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
+      </p>
       <Sign>
         Done with <HeartIcon icon={faHeart} title="love" /> by mi maridito
       </Sign>

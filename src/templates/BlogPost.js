@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar } from '@fortawesome/pro-light-svg-icons';
 
-import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rhythm, scale } from '../utils/typography';
@@ -24,6 +24,13 @@ export const pageQuery = graphql`
         title
         date(formatString: "LL", locale: "es")
         description
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     }
   }
@@ -32,23 +39,22 @@ export const pageQuery = graphql`
 const BlogPost = ({ data, pageContext, location }) => {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
+  const { title, description, date, featuredImage } = post.frontmatter;
+  const featuredImgFluid = featuredImage ? featuredImage.childImageSharp.fluid : null;
   const { previous, next } = pageContext;
-
   return (
     <Layout location={location} title={siteTitle}>
-      <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description || post.excerpt}
-      />
+      <SEO title={title} description={description || post.excerpt} />
       <article>
         <header>
+          {featuredImgFluid && <Img fluid={featuredImgFluid} />}
           <h1
             style={{
               marginTop: rhythm(1),
               marginBottom: 0,
             }}
           >
-            {post.frontmatter.title}
+            {title}
           </h1>
           <p
             style={{
@@ -57,7 +63,7 @@ const BlogPost = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            <FontAwesomeIcon icon={faCalendar} /> {post.frontmatter.date}
+            <FontAwesomeIcon icon={faCalendar} /> {date}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />
@@ -66,9 +72,9 @@ const BlogPost = ({ data, pageContext, location }) => {
             marginBottom: rhythm(1),
           }}
         />
-        <footer>
+        {/* <footer>
           <Bio />
-        </footer>
+        </footer> */}
       </article>
 
       <nav>
@@ -110,6 +116,7 @@ BlogPost.propTypes = {
         title: PropTypes.string.isRequired,
         date: PropTypes.string.isRequired,
         description: PropTypes.string.isRequired,
+        featuredImage: PropTypes.object,
       }).isRequired,
     }).isRequired,
     site: PropTypes.shape({

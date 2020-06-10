@@ -2,9 +2,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { PageProps, Link, graphql } from 'gatsby';
+import Img from 'gatsby-image';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar } from '@fortawesome/pro-light-svg-icons';
-import Bio from '../components/Bio';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rhythm } from '../utils/typography';
@@ -31,6 +31,16 @@ export const pageQuery = graphql`
             date(formatString: "LL", locale: "es")
             title
             description
+            featuredImage {
+              childImageSharp {
+                fixed(height: 200, width: 200) {
+                  ...GatsbyImageSharpFixed
+                }
+                # fluid(maxWidth: 200, maxHeight: 200) {
+                #   ...GatsbyImageSharpFluid
+                # }
+              }
+            }
           }
         }
       }
@@ -45,34 +55,38 @@ const BlogIndex = ({ data, location }) => {
   return (
     <Layout location={location} title={siteTitle}>
       <SEO title="All posts" />
-      <Bio />
       {posts.map(({ node }) => {
-        const title = node.frontmatter.title || node.fields.slug;
+        const { title, date, description, featuredImage } = node.frontmatter;
+        const { slug } = node.fields;
+        const featuredImg = featuredImage ? featuredImage.childImageSharp.fixed : null;
         return (
-          <article key={node.fields.slug}>
-            <header>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 5),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.fields.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <p style={{ marginBottom: rhythm(1 / 3) }}>
-                <small>
-                  <FontAwesomeIcon icon={faCalendar} /> {node.frontmatter.date}
-                </small>
-              </p>
-            </header>
-            <section>
-              <p
-                dangerouslySetInnerHTML={{
-                  __html: node.frontmatter.description || node.excerpt,
-                }}
-              />
-            </section>
+          <article key={slug} style={{ overflow: 'auto', margin: '2em 0' }}>
+            {featuredImg && <Img fixed={featuredImg} style={{ float: 'left', width: 200 }} />}
+            <div style={{ marginLeft: featuredImg ? 200 : 0, padding: '1em' }}>
+              <header>
+                <h3
+                  style={{
+                    marginBottom: rhythm(1 / 5),
+                  }}
+                >
+                  <Link style={{ boxShadow: `none` }} to={slug}>
+                    {title || slug}
+                  </Link>
+                </h3>
+                <p style={{ marginBottom: rhythm(1 / 3) }}>
+                  <small>
+                    <FontAwesomeIcon icon={faCalendar} /> {date}
+                  </small>
+                </p>
+              </header>
+              <section>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: description || node.excerpt,
+                  }}
+                />
+              </section>
+            </div>
           </article>
         );
       })}
@@ -98,6 +112,7 @@ BlogIndex.propTypes = {
             date: PropTypes.string.isRequired,
             title: PropTypes.string.isRequired,
             description: PropTypes.string.isRequired,
+            featuredImage: PropTypes.object,
           }).isRequired,
         }).isRequired,
       }).isRequired,
