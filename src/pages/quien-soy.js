@@ -35,26 +35,26 @@ const QuienSoy = ({ data, location }) => {
       <p>
         Comienzo con los pañales de tela en septiembre de 2019 cuando nace mi hijo, aunque ya
         llevaba meses investigando sobre el tema, buscando información y comprando poco a poco mi
-        stash (colección de pañales). Pero mi historia con los pañales comienza unos años antes
-        cuando mi prima decide utilizar este tipo de pañales con mi sobrino. La verdad cuando me
+        stash (colección de pañales). Pero mi historia con los pañales se remonta unos años atrás,
+        cuando mi prima decide utilizar este tipo de pañales con mi sobrino. La verdad, cuando me
         enteré de que iban a utilizarlos pensé lo mismo que muchos otros familiares y amigos: ¡Están
-        locas! ¡Qué manera de complicarse la vida! Poco a poco iba viendo esos estampados tan
-        bonitos, e iba escuchandolas contando lo maravilloso de la aventura en la que se habían
-        metido.
+        locas! ¡Qué manera de complicarse la vida! Pero poco a poco, según iba viendo esos
+        estampados tan bonitos, e iba escuchandola contando lo maravilloso de la aventura en la que
+        se habían metido, fuí cambiado de opinión.
       </p>
       <p>
-        Cuando me quedé embarazada no dudé un segundo ¡quiero probar los pañalitos! Papá no estaba
-        muy convencido en ese momento. La situación de pañal con caca, niño llorando y él intentando
-        ponerle el pañal nuevo era como una historia de terror. Como mi prima, yo también recibí
-        críticas de muchos familiares y amigos, pero al igual que a ella, nada nos detuvo. La
+        Cuando me quedé embarazada no lo dudé un segundo ¡Quería probar los pañalitos! La
         información que iba sacando era todo maravilloso. Sólo encontraba buenas críticas, ahorro,
-        ecologismo, cuidado de la piel del bebé,...Ir contándole a papá todo los beneficios de los
-        pañales de tela le hizo, poco a poco, ir viéndolos cada vez con mejores ojos. Así que nos
-        lanzamos a hacer las primeras compras. En principio sólo íbamos a probar alternando con
-        desechables. Pero la historia cambió cuando, después de una semana en el hospital usando
-        sólo desechables y teniendo fugas a diario (éramos novatos y supuestamente eran cosas
-        normales, de no saber poner bien los pañales) al llegar a casa, pusimos nuestro primer pañal
-        de tela y no volvimos a tener fugas de caca, y las de pipi eran mínimas o nulas.
+        ecologismo, cuidado de la piel del bebé,... Aunque papá no estaba muy convencido. Le daba
+        pánico imaginarse la situación de tener al niño llorando mientras él tenía que "guardar" el
+        pañal sucio en vez de incinerarlo con napalm. Pero ir poco a poco contándole las ventajas de
+        los pañales de tela le hizo, poco a poco, verlos cada vez con mejores ojos. Y al igual que
+        mi prima, yo también recibí críticas de muchos familiares y amigos, pero finalmente nada nos
+        detuvo y nos lanzamos a hacer las primeras compras. En principio sólo íbamos a probar
+        alternando tela con desechables, pero tras una semana en el hospital usando sólo desechables
+        y teniendo fugas a diario (éramos novatos y supuestamente es lo habitual, de no saber poner
+        bien los pañales), y al volver a casa, empezar con los de tela y no volver a tener fugas de
+        caca, y las de pipi eran mínimas o nulas, terminamos de convencernos.
       </p>
       <p>
         Si os lo preguntáis ¿qué pasó con los familiares y amigos que criticaban nuestra decisión?

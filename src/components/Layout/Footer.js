@@ -22,8 +22,17 @@ const blinkingHeart = keyframes`
     from {
         transform: scale(1);
     }
+    60% {
+        transform: scale(1);
+    }
+    70% {
+        transform: scale(1.3);
+    }
     80% {
-        transform: scale(1.2);
+        transform: scale(1);
+    }
+    90% {
+        transform: scale(1.3);
     }
     to {
         transform: scale(1);
@@ -46,7 +55,7 @@ const Sign = styled.p`
 
   &:hover {
     ${HeartIcon} {
-      animation-duration: 0.5s;
+      animation-duration: 0.8s;
     }
   }
 `;

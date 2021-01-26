@@ -11,7 +11,7 @@ const Container = styled.footer`
 
 const Bio = (props) => {
   // https://www.gatsbyjs.org/docs/use-static-query/
-  const data = useStaticQuery(graphql`
+  const { avatar, site } = useStaticQuery(graphql`
     query BioQuery {
       avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
         childImageSharp {
@@ -34,11 +34,11 @@ const Bio = (props) => {
     }
   `);
 
-  const { author } = data.site.siteMetadata;
+  const { author } = site.siteMetadata;
   return (
     <Container {...props}>
       <Image
-        fixed={data.avatar.childImageSharp.fixed}
+        fixed={avatar.childImageSharp.fixed}
         alt={author.name}
         style={{
           marginRight: rhythm(1 / 2),

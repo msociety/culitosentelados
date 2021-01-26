@@ -1,5 +1,5 @@
 import Typography from 'typography';
-import { MOBILE_MEDIA_QUERY } from './breakpoint-constants';
+import { MEDIA_QUERY__MOBILE } from './breakpoint-constants';
 import gray from 'gray-percentage';
 
 const typography = new Typography({
@@ -53,7 +53,7 @@ const typography = new Typography({
     'blockquote cite:before': {
       content: '"— "',
     },
-    [MOBILE_MEDIA_QUERY]: {
+    [MEDIA_QUERY__MOBILE]: {
       html: {
         fontSize: `${(16 / 16) * 100}%`,
       },

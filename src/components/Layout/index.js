@@ -1,21 +1,22 @@
 import React from 'react';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { rhythm } from '../../utils/typography';
 import Header from './Header';
 import Footer from './Footer';
 
+const Content = styled.main`
+  margin: 0 auto;
+  max-width: ${rhythm(30)};
+  padding: ${rhythm(1.5)} ${rhythm(3 / 4)};
+  text-align: justify;
+  text-justify: inter-character;
+`;
+
 const Layout = ({ location, title, children }) => (
   <>
     <Header location={location} title={title} />
-    <main
-      style={{
-        margin: '0 auto',
-        maxWidth: rhythm(24),
-        padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-      }}
-    >
-      {children}
-    </main>
+    <Content>{children}</Content>
     <Footer />
   </>
 );

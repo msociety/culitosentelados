@@ -1,5 +1,6 @@
 // Gatsby supports TypeScript natively!
 import React from 'react';
+import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { PageProps, Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
@@ -8,6 +9,37 @@ import { faCalendar } from '@fortawesome/pro-light-svg-icons';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rhythm } from '../utils/typography';
+import { MEDIA_QUERY__DEFAULT, MEDIA_QUERY__MIN_DEFAULT } from '../utils/breakpoint-constants';
+
+const Content = styled.div`
+  padding: 1em;
+`;
+
+const Article = styled.article`
+  margin: 2em 0;
+  ${MEDIA_QUERY__MIN_DEFAULT} {
+    display: flex;
+    align-items: center;
+    > .gatsby-image-wrapper {
+      flex-basis: 200px;
+    }
+    > ${Content} {
+      flex: 1;
+    }
+  }
+`;
+
+const FixedImg = styled(Img)`
+  ${MEDIA_QUERY__DEFAULT} {
+    display: none !important;
+  }
+`;
+
+const FluidImg = styled(Img)`
+  ${MEDIA_QUERY__MIN_DEFAULT} {
+    display: none;
+  }
+`;
 
 export const pageQuery = graphql`
   query {
@@ -36,9 +68,9 @@ export const pageQuery = graphql`
                 fixed(height: 200, width: 200) {
                   ...GatsbyImageSharpFixed
                 }
-                # fluid(maxWidth: 200, maxHeight: 200) {
-                #   ...GatsbyImageSharpFluid
-                # }
+                fluid(maxWidth: 600, maxHeight: 150) {
+                  ...GatsbyImageSharpFluid
+                }
               }
             }
           }
@@ -58,11 +90,22 @@ const BlogIndex = ({ data, location }) => {
       {posts.map(({ node }) => {
         const { title, date, description, featuredImage } = node.frontmatter;
         const { slug } = node.fields;
-        const featuredImg = featuredImage ? featuredImage.childImageSharp.fixed : null;
+        const featuredImg = featuredImage
+          ? {
+              fixed: featuredImage.childImageSharp.fixed,
+              fluid: featuredImage.childImageSharp.fluid,
+            }
+          : null;
+        console.log('featuredImg', featuredImg);
         return (
-          <article key={slug} style={{ overflow: 'auto', margin: '2em 0' }}>
-            {featuredImg && <Img fixed={featuredImg} style={{ float: 'left', width: 200 }} />}
-            <div style={{ marginLeft: featuredImg ? 200 : 0, padding: '1em' }}>
+          <Article key={slug}>
+            {featuredImg && (
+              <>
+                <FixedImg fixed={featuredImg.fixed} />
+                <FluidImg fluid={featuredImg.fluid} />
+              </>
+            )}
+            <Content>
               <header>
                 <h3
                   style={{
@@ -86,8 +129,8 @@ const BlogIndex = ({ data, location }) => {
                   }}
                 />
               </section>
-            </div>
-          </article>
+            </Content>
+          </Article>
         );
       })}
     </Layout>
