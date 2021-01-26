@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBaby } from '@fortawesome/pro-duotone-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faBaby } from '@fortawesome/pro-duotone-svg-icons';
 import { rhythm, scale } from '../../utils/typography';
 
-export const BabyIcon = styled(FontAwesomeIcon)`
-  color: violet;
-`;
+// export const BabyIcon = styled(FontAwesomeIcon)`
+//   color: violet;
+// `;
 
 export const Container = styled.header`
   max-width: 600px;
@@ -44,7 +44,8 @@ const Header = ({ location, title }) => {
           }}
           to="/"
         >
-          <BabyIcon icon={faBaby} /> {title}
+          {/* <BabyIcon icon={faBaby} /> */}
+          {title}
         </Link>
       </h1>
     );
@@ -63,7 +64,8 @@ const Header = ({ location, title }) => {
           }}
           to={'/'}
         >
-          <BabyIcon icon={faBaby} /> {title}
+          {/* <BabyIcon icon={faBaby} /> */}
+          {title}
         </Link>
       </h3>
     );

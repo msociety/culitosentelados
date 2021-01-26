@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import PropTypes from 'prop-types';
 import { PageProps, Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/pro-light-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCalendar } from '@fortawesome/pro-light-svg-icons';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 import { rhythm } from '../utils/typography';
@@ -118,7 +118,8 @@ const BlogIndex = ({ data, location }) => {
                 </h3>
                 <p style={{ marginBottom: rhythm(1 / 3) }}>
                   <small>
-                    <FontAwesomeIcon icon={faCalendar} /> {date}
+                    {/* <FontAwesomeIcon icon={faCalendar} /> */}
+                    {date}
                   </small>
                 </p>
               </header>

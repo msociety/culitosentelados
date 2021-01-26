@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 import Img from 'gatsby-image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar } from '@fortawesome/pro-light-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCalendar } from '@fortawesome/pro-light-svg-icons';
 
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
@@ -63,7 +63,8 @@ const BlogPost = ({ data, pageContext, location }) => {
               marginBottom: rhythm(1),
             }}
           >
-            <FontAwesomeIcon icon={faCalendar} /> {date}
+            {/* <FontAwesomeIcon icon={faCalendar} /> */}
+            {date}
           </p>
         </header>
         <section dangerouslySetInnerHTML={{ __html: post.html }} />

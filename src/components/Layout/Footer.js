@@ -3,8 +3,8 @@ import React from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 // import { Link } from 'gatsby';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart } from '@fortawesome/pro-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faHeart } from '@fortawesome/pro-solid-svg-icons';
 import { scale, rhythm } from '../../utils/typography';
 import Bio from '../Bio';
 
@@ -39,12 +39,12 @@ const blinkingHeart = keyframes`
     }
 `;
 
-const HeartIcon = styled(FontAwesomeIcon)`
-  color: red;
-  animation-name: ${blinkingHeart};
-  animation-duration: 1.2s;
-  animation-iteration-count: infinite;
-`;
+// const HeartIcon = styled(FontAwesomeIcon)`
+//   color: red;
+//   animation-name: ${blinkingHeart};
+//   animation-duration: 1.2s;
+//   animation-iteration-count: infinite;
+// `;
 
 const Sign = styled.p`
   font-size: 0.7em;
@@ -53,11 +53,11 @@ const Sign = styled.p`
   bottom: 5px;
   margin: 0;
 
-  &:hover {
+  /* &:hover {
     ${HeartIcon} {
       animation-duration: 0.8s;
     }
-  }
+  } */
 `;
 
 const Footer = () => {
@@ -68,7 +68,8 @@ const Footer = () => {
         © {new Date().getFullYear()}. Built with <a href="https://www.gatsbyjs.org">Gatsby</a>
       </p>
       <Sign>
-        Done with <HeartIcon icon={faHeart} title="love" /> by mi maridito
+        {/* Done with <HeartIcon icon={faHeart} title="love" /> by my maridito */}
+        Done with love by my maridito
       </Sign>
     </Container>
   );
